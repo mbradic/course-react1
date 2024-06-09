@@ -52,13 +52,19 @@ export default function AppStructure() {
 
       setFirstRunOutput(
         await fetchText(
-          "https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-static-output.txt"
+          "https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-first-run-output.txt"
         )
       );
 
       setHtmlOutput(
         await fetchText(
-          "https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-dom-output.txt"
+          "https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-static-output.html"
+        )
+      );
+
+      setDomOutput(
+        await fetchText(
+          "https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-dom-output.html"
         )
       );
     })();
@@ -107,7 +113,7 @@ export default function AppStructure() {
           extensions={[json()]}
         />
 
-        <li>App.js</li>
+        <li>src/App.js</li>
         <ReactCodeMirror
           value={appJs}
           readOnly
@@ -115,30 +121,21 @@ export default function AppStructure() {
           extensions={[javascript({ jsx: true })]}
         />
 
-        <li>JSX a Babel.js</li>
-        <div style={{ display: "flex", margin: "15px" }}>
-          <div>
-            JSX
-            <ReactCodeMirror
-              value={babel_in}
-              readOnly
-              style={{ margin: "15px 0px 15px 0px" }}
-              extensions={[javascript({ jsx: true })]}
-            />
-          </div>
-          <span style={{ margin: "25px 20px 0 20px" }}>
-            <code>{"->"}</code>
-          </span>
-          <div>
-            JavaScript
-            <ReactCodeMirror
-              value={babel_out}
-              readOnly
-              style={{ margin: "15px 0px 15px 0px" }}
-              extensions={[javascript({ jsx: true })]}
-            />
-          </div>
-        </div>
+        <li>JSX</li>
+        <ReactCodeMirror
+          value={babel_in}
+          readOnly
+          style={{ margin: "15px 0px 15px 0px" }}
+          extensions={[javascript({ jsx: true })]}
+        />
+
+        <li> JavaScript</li>
+        <ReactCodeMirror
+          value={babel_out}
+          readOnly
+          style={{ margin: "15px 0px 15px 0px" }}
+          extensions={[javascript({ jsx: true })]}
+        />
 
         <li>public/index.html</li>
         <ReactCodeMirror
@@ -157,45 +154,40 @@ export default function AppStructure() {
         />
 
         <li>Spusťte aplikaci</li>
-        <div style={{ display: "flex", margin: "15px" }}>
-          <div style={{ padding: "0 0 0 30px" }}>
-            <div style={{ padding: "15px 0 0 0" }}>Příkazový řádek</div>
-            <ReactCodeMirror
-              value="npm start"
-              readOnly
-              style={{ margin: "15px 0px 15px 0px" }}
-              extensions={[json()]}
-              basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
-            />
-          </div>
-          <div style={{ padding: "0 0 0 30px" }}>
-            <div style={{ padding: "15px 0 15px 0" }}>Výstup - příkazový řádek</div>
-            <ReactCodeMirror
-              value={firstRunOutput}
-              readOnly
-              extensions={[json()]}
-              basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
-            />
-          </div>
-          <div style={{ padding: "0 0 0 30px" }}>
-            <div style={{ padding: "15px 0 15px 0" }}>Prohlížeč - statické HTML</div>
-            <ReactCodeMirror
-              value={htmlOutput}
-              readOnly
-              extensions={[json()]}
-              basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
-            />
-          </div>
-          <div style={{ padding: "0 0 0 30px" }}>
-            <div style={{ padding: "15px 0 15px 0" }}>Prohlížeč - DOM</div>
-            <ReactCodeMirror
-              value={domOutput}
-              readOnly
-              extensions={[json()]}
-              basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
-            />
-          </div>
-        </div>
+        <ReactCodeMirror
+          value="npm start"
+          readOnly
+          style={{ margin: "15px 0px 15px 0px" }}
+          extensions={[json()]}
+          basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
+        />
+
+        <li>Výstup - příkazový řádek</li>
+        <ReactCodeMirror
+          style={{ margin: "15px 0px 15px 0px" }}
+          value={firstRunOutput}
+          readOnly
+          extensions={[json()]}
+          basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
+        />
+
+        <li> Prohlížeč - statické HTML</li>
+        <ReactCodeMirror
+          style={{ margin: "15px 0px 15px 0px" }}
+          value={htmlOutput}
+          readOnly
+          extensions={[json()]}
+          basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
+        />
+
+        <li>Prohlížeč - DOM</li>
+        <ReactCodeMirror
+          style={{ margin: "15px 0px 15px 0px" }}
+          value={domOutput}
+          readOnly
+          extensions={[json()]}
+          basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
+        />
       </ul>
     </>
   );
