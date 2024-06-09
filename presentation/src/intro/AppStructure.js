@@ -10,6 +10,7 @@ export default function AppStructure() {
   const [appJs, setAppJs] = useState("");
   const [indexHtml, setIndexHtml] = useState("");
   const [indexJs, setIndexJs] = useState("");
+  const [firstRunOutput, setFirstRunOutput] = useState("");
 
   useEffect(() => {
     async function fetchText(url) {
@@ -44,6 +45,12 @@ export default function AppStructure() {
       setIndexJs(
         await fetchText(
           "https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--create-index-js/examples/hello-world/src/index.js"
+        )
+      );
+
+      setFirstRunOutput(
+        await fetchText(
+          "https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-first-run-output.txt"
         )
       );
     })();
@@ -111,7 +118,7 @@ export default function AppStructure() {
               extensions={[javascript({ jsx: true })]}
             />
           </div>
-          <span style={{ margin: "75px 20px 0 20px" }}>
+          <span style={{ margin: "25px 20px 0 20px" }}>
             <code>{"->"}</code>
           </span>
           <div>
@@ -142,13 +149,27 @@ export default function AppStructure() {
         />
 
         <li>Spusťte aplikaci</li>
-        <ReactCodeMirror
-          value="npm start"
-          readOnly
-          style={{ margin: "15px 0px 15px 0px" }}
-          extensions={[json()]}
-          basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
-        />
+        <div style={{ display: "flex", margin: "15px" }}>
+          <div style={{ padding: "0 0 0 30px" }}>
+            <div style={{ padding: "15px 0 0 0" }}>Příkazový řádek</div>
+            <ReactCodeMirror
+              value="npm start"
+              readOnly
+              style={{ margin: "15px 0px 15px 0px" }}
+              extensions={[json()]}
+              basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
+            />
+          </div>
+          <div style={{ padding: "0 0 0 30px" }}>
+            <div style={{ padding: "15px 0 15px 0" }}>Výstup</div>
+            <ReactCodeMirror
+              value={firstRunOutput}
+              readOnly
+              extensions={[json()]}
+              basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
+            />
+          </div>
+        </div>
       </ul>
     </>
   );
