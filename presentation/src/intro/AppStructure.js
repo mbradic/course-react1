@@ -114,8 +114,15 @@ export default App;
           extensions={[json()]}
         />
 
-        <li>src/index.js</li>
+        <li>App.js</li>
+        <ReactCodeMirror
+          value={app_js}
+          readOnly
+          style={{ margin: "15px 0px 15px 0px" }}
+          extensions={[javascript({ jsx: true })]}
+        />
 
+        <li>src/index.js</li>
         <ReactCodeMirror
           value={index_js}
           readOnly
@@ -147,6 +154,7 @@ export default App;
             />
           </div>
         </div>
+
         <li>public/index.html</li>
         <ReactCodeMirror
           value={index_html}
@@ -154,14 +162,15 @@ export default App;
           style={{ margin: "15px 0px 15px 0px" }}
           extensions={[html()]}
         />
-        <li>app.js</li>
-        <ReactCodeMirror
-          value={app_js}
-          readOnly
-          style={{ margin: "15px 0px 15px 0px" }}
-          extensions={[javascript({ jsx: true })]}
-        />
       </ul>
+      <li>Spusťte aplikaci</li>
+      <ReactCodeMirror
+        value="npm start"
+        readOnly
+        style={{ margin: "15px 0px 15px 0px" }}
+        extensions={[json()]}
+        basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
+      />
     </>
   );
 }
