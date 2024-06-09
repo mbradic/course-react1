@@ -176,8 +176,8 @@ export default function AppStructure() {
           style={{ margin: "15px 0px 15px 0px" }}
           value={htmlOutput}
           readOnly
-          extensions={[json()]}
-          basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
+          extensions={[html()]}
+          basicSetup={{ highlightActiveLine: false }}
         />
 
         <li>Prohlížeč - DOM</li>
@@ -185,8 +185,8 @@ export default function AppStructure() {
           style={{ margin: "15px 0px 15px 0px" }}
           value={domOutput}
           readOnly
-          extensions={[json()]}
-          basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
+          extensions={[html()]}
+          basicSetup={{ highlightActiveLine: false }}
         />
       </ul>
     </>
