@@ -6,54 +6,25 @@ import { useEffect, useState } from "react";
 
 export default function AppStructure() {
   const [packageJsonBefore, setPackageJsonBefore] = useState("");
+  const [packageJsonAfter, setPackageJsonAfter] = useState("");
   useEffect(() => {
+    async function fetchText(url) {
+      const response = await fetch(url);
+      return await response.text();
+    }
     (async function () {
-      const response = await fetch(
-        "https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--package-json-before/examples/hello-world/package.json"
+      setPackageJsonBefore(
+        await fetchText(
+          "https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--package-json-before/examples/hello-world/package.json"
+        )
       );
-      const text = await response.text();
-      setPackageJsonBefore(text);
+      setPackageJsonAfter(
+        await fetchText(
+          "https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--package-json-after/examples/hello-world/package.json"
+        )
+      );
     })();
   }, []);
-  // const package_json = `{
-  //   "name": "hello-world",
-  //   "version": "0.1.0",
-  //   "private": true,
-  //   "dependencies": {
-  //     "@testing-library/jest-dom": "^5.17.0",
-  //     "@testing-library/react": "^13.4.0",
-  //     "@testing-library/user-event": "^13.5.0",
-  //     "react": "^18.2.0",
-  //     "react-dom": "^18.2.0",
-  //     "react-scripts": "5.0.1",
-  //     "web-vitals": "^2.1.4"
-  //   },
-  //   "scripts": {
-  //     "start": "react-scripts start",
-  //     "build": "react-scripts build",
-  //     "test": "react-scripts test",
-  //     "eject": "react-scripts eject"
-  //   },
-  //   "eslintConfig": {
-  //     "extends": [
-  //       "react-app",
-  //       "react-app/jest"
-  //     ]
-  //   },
-  //   "browserslist": {
-  //     "production": [
-  //       ">0.2%",
-  //       "not dead",
-  //       "not op_mini all"
-  //     ],
-  //     "development": [
-  //       "last 1 chrome version",
-  //       "last 1 firefox version",
-  //       "last 1 safari version"
-  //     ]
-  //   }
-  // }
-  // `;
 
   const index_js = `import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -137,7 +108,7 @@ export default App;
         />
         <p>Po úpravě:</p>
         <ReactCodeMirror
-          value={packageJsonBefore}
+          value={packageJsonAfter}
           readOnly
           style={{ margin: "15px 0px 15px 0px" }}
           extensions={[json()]}
