@@ -7,6 +7,8 @@ import { useEffect, useState } from "react";
 export default function AppStructure() {
   const [packageJsonBefore, setPackageJsonBefore] = useState("");
   const [packageJsonAfter, setPackageJsonAfter] = useState("");
+  const [appJs, setAppJs] = useState("");
+
   useEffect(() => {
     async function fetchText(url) {
       const response = await fetch(url);
@@ -18,9 +20,16 @@ export default function AppStructure() {
           "https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--package-json-before/examples/hello-world/package.json"
         )
       );
+
       setPackageJsonAfter(
         await fetchText(
           "https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--package-json-after/examples/hello-world/package.json"
+        )
+      );
+
+      setAppJs(
+        await fetchText(
+          "https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--app-json/examples/hello-world/package.json"
         )
       );
     })();
@@ -116,7 +125,7 @@ export default App;
 
         <li>App.js</li>
         <ReactCodeMirror
-          value={app_js}
+          value={appJs}
           readOnly
           style={{ margin: "15px 0px 15px 0px" }}
           extensions={[javascript({ jsx: true })]}
