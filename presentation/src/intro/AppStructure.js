@@ -93,11 +93,10 @@ export default function AppStructure() {
       <h4>/node_modules</h4>
       <p>lokální úložiště npm balíčků</p>
 
-      <h4>/package.json</h4>
-      <h5>Po vytvoření:</h5>
+      <h4>/package.json - Po vytvoření</h4>
       <JsonCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--package-json-before/examples/hello-world/package.json" />
 
-      <h5>Po úpravě:</h5>
+      <h4>/package.json - Po úpravě:</h4>
       <JsonCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--package-json-after/examples/hello-world/package.json" />
 
       <h4>/src/App.jsx</h4>
