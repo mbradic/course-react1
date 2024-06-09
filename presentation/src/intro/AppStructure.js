@@ -11,6 +11,8 @@ export default function AppStructure() {
   const [indexHtml, setIndexHtml] = useState("");
   const [indexJs, setIndexJs] = useState("");
   const [firstRunOutput, setFirstRunOutput] = useState("");
+  const [htmlOutput, setHtmlOutput] = useState("");
+  const [domOutput, setDomOutput] = useState("");
 
   useEffect(() => {
     async function fetchText(url) {
@@ -50,7 +52,13 @@ export default function AppStructure() {
 
       setFirstRunOutput(
         await fetchText(
-          "https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-first-run-output.txt"
+          "https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-static-output.txt"
+        )
+      );
+
+      setHtmlOutput(
+        await fetchText(
+          "https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-dom-output.txt"
         )
       );
     })();
@@ -161,9 +169,27 @@ export default function AppStructure() {
             />
           </div>
           <div style={{ padding: "0 0 0 30px" }}>
-            <div style={{ padding: "15px 0 15px 0" }}>Výstup</div>
+            <div style={{ padding: "15px 0 15px 0" }}>Výstup - příkazový řádek</div>
             <ReactCodeMirror
               value={firstRunOutput}
+              readOnly
+              extensions={[json()]}
+              basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
+            />
+          </div>
+          <div style={{ padding: "0 0 0 30px" }}>
+            <div style={{ padding: "15px 0 15px 0" }}>Prohlížeč - statické HTML</div>
+            <ReactCodeMirror
+              value={htmlOutput}
+              readOnly
+              extensions={[json()]}
+              basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
+            />
+          </div>
+          <div style={{ padding: "0 0 0 30px" }}>
+            <div style={{ padding: "15px 0 15px 0" }}>Prohlížeč - DOM</div>
+            <ReactCodeMirror
+              value={domOutput}
               readOnly
               extensions={[json()]}
               basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
