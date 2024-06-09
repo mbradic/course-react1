@@ -64,27 +64,6 @@ reportWebVitals();`;
 
   const babel_out = `var title = /*#__PURE__*/ React.createElement("h1", null, "Hello world");`;
 
-  const index_html = `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-  </body>
-</html>`;
-
   return (
     <>
       <h3>Struktura aplikace</h3>
@@ -163,7 +142,6 @@ reportWebVitals();`;
           extensions={[json()]}
           basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
         />
-        
       </ul>
     </>
   );
