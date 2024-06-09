@@ -5,11 +5,11 @@ import { html } from "@codemirror/lang-html";
 import { useEffect, useState } from "react";
 
 export default function AppStructure() {
-  const [packageJsonBefore, setPackageJsonBefore] = useState('')
+  const [packageJsonBefore, setPackageJsonBefore] = useState("");
   useEffect(() => {
     (async function () {
       const response = await fetch(
-        "https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world/package.json"
+        "https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--package-json-before/examples/hello-world/package.json"
       );
       const text = await response.text();
       setPackageJsonBefore(text);
@@ -54,8 +54,6 @@ export default function AppStructure() {
   //   }
   // }
   // `;
-
-
 
   const index_js = `import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -129,7 +127,7 @@ export default App;
       <h3>Struktura aplikace</h3>
       <ul>
         <li>paskage.json a node_modules</li>
-        
+
         <p>Po vytvoření:</p>
         <ReactCodeMirror
           value={packageJsonBefore}
@@ -143,10 +141,8 @@ export default App;
           readOnly
           style={{ margin: "15px 0px 15px 0px" }}
           extensions={[json()]}
-          
         />
-        
-        
+
         <li>src/index.js</li>
 
         <ReactCodeMirror
