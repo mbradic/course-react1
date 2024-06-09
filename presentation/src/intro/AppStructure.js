@@ -177,6 +177,15 @@ export default function AppStructure() {
           extensions={[html()]}
           basicSetup={{ highlightActiveLine: false }}
         />
+
+        <li>package.json po prvním spuštění</li>
+        <ReactCodeMirror
+          style={{ margin: "15px 0px 15px 0px" }}
+          value={domOutput}
+          readOnly
+          extensions={[html()]}
+          basicSetup={{ highlightActiveLine: false }}
+        />
       </ul>
     </>
   );
