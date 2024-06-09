@@ -9,6 +9,7 @@ export default function AppStructure() {
   const [packageJsonAfter, setPackageJsonAfter] = useState("");
   const [appJs, setAppJs] = useState("");
   const [indexHtml, setIndexHtml] = useState("");
+  const [indexJs, setIndexJs] = useState("");
 
   useEffect(() => {
     async function fetchText(url) {
@@ -39,26 +40,32 @@ export default function AppStructure() {
           "https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--create-index-html/examples/hello-world/public/index.html"
         )
       );
+
+      setIndexJs(
+        await fetchText(
+          "https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--create-index-js/examples/hello-world/src/index.js"
+        )
+      );
     })();
   }, []);
 
-  const index_js = `import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+  //   const index_js = `import React from 'react';
+  // import ReactDOM from 'react-dom/client';
+  // import './index.css';
+  // import App from './App';
+  // import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+  // const root = ReactDOM.createRoot(document.getElementById('root'));
+  // root.render(
+  //   <React.StrictMode>
+  //     <App />
+  //   </React.StrictMode>
+  // );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();`;
+  // // If you want to start measuring performance in your app, pass a function
+  // // to log results (for example: reportWebVitals(console.log))
+  // // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+  // reportWebVitals();`;
 
   const babel_in = `const title = <h1>Hello world</h1>;`;
 
@@ -128,7 +135,7 @@ reportWebVitals();`;
 
         <li>src/index.js</li>
         <ReactCodeMirror
-          value={index_js}
+          value={indexJs}
           readOnly
           style={{ margin: "15px 0px 15px 0px" }}
           extensions={[javascript({ jsx: true })]}
