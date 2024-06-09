@@ -29,7 +29,7 @@ export default function AppStructure() {
 
       setAppJs(
         await fetchText(
-          "https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--app-json/examples/hello-world/package.json"
+          "https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--app-js/examples/hello-world/src/App.js"
         )
       );
     })();
@@ -88,19 +88,19 @@ reportWebVitals();`;
   </body>
 </html>`;
 
-  const app_js = `import "./App.css";
+//   const app_js = `import "./App.css";
 
-function App() {
-  return (
-    <>
-      <h1>Hello world</h1>
-      <p>From React</p>
-    </>
-  );
-}
+// function App() {
+//   return (
+//     <>
+//       <h1>Hello world</h1>
+//       <p>From React</p>
+//     </>
+//   );
+// }
 
-export default App;
-`;
+// export default App;
+// `;
 
   return (
     <>
