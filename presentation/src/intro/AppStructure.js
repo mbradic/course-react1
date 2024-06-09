@@ -8,6 +8,7 @@ export default function AppStructure() {
   const [packageJsonBefore, setPackageJsonBefore] = useState("");
   const [packageJsonAfter, setPackageJsonAfter] = useState("");
   const [appJs, setAppJs] = useState("");
+  const [indexHtml, setIndexHtml] = useState("");
 
   useEffect(() => {
     async function fetchText(url) {
@@ -30,6 +31,12 @@ export default function AppStructure() {
       setAppJs(
         await fetchText(
           "https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--create-app-js/examples/hello-world/src/App.js"
+        )
+      );
+
+      setIndexHtml(
+        await fetchText(
+          "https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--create-index-html/examples/hello-world/public/index.html"
         )
       );
     })();
@@ -132,6 +139,14 @@ reportWebVitals();`;
           </div>
         </div>
 
+        <li>public/index.html</li>
+        <ReactCodeMirror
+          value={indexHtml}
+          readOnly
+          style={{ margin: "15px 0px 15px 0px" }}
+          extensions={[html()]}
+        />
+
         <li>src/index.js</li>
         <ReactCodeMirror
           value={index_js}
@@ -140,22 +155,16 @@ reportWebVitals();`;
           extensions={[javascript({ jsx: true })]}
         />
 
-        <li>public/index.html</li>
+        <li>Spusťte aplikaci</li>
         <ReactCodeMirror
-          value={index_html}
+          value="npm start"
           readOnly
           style={{ margin: "15px 0px 15px 0px" }}
-          extensions={[html()]}
+          extensions={[json()]}
+          basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
         />
+        
       </ul>
-      <li>Spusťte aplikaci</li>
-      <ReactCodeMirror
-        value="npm start"
-        readOnly
-        style={{ margin: "15px 0px 15px 0px" }}
-        extensions={[json()]}
-        basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
-      />
     </>
   );
 }
