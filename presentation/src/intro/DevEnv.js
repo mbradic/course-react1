@@ -3,11 +3,11 @@ import ReactCodeMirror from "@uiw/react-codemirror";
 export default function DevEnv() {
   return (
     <>
-      <h3>Struktura aplikace</h3>
+      <h3>Vývojové prostředí</h3>
       <ul>
         <li>node.js</li>
         <li>npm</li>
-        <li>(dříve) create-react-app</li>
+        <li style={{textDecoration: "line-through"}}>create-react-app</li>
         <ReactCodeMirror
           value="npx create-react-app hello-world"
           readOnly
