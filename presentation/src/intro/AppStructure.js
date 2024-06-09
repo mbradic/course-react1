@@ -29,7 +29,7 @@ export default function AppStructure() {
 
       setAppJs(
         await fetchText(
-          "https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--app-js/examples/hello-world/src/App.js"
+          "https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--create-app-js/examples/hello-world/src/App.js"
         )
       );
     })();
@@ -53,19 +53,9 @@ root.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();`;
 
-  const babel_in = `root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);`;
+  const babel_in = `const title = <h1>Hello world</h1>;`;
 
-  const babel_out = `root.render(
-/*#__PURE__*/ React.createElement(
-  React.StrictMode,
-  null,
-  /*#__PURE__*/ React.createElement(App, null)
-)
-);`;
+  const babel_out = `var title = /*#__PURE__*/ React.createElement("h1", null, "Hello world");`;
 
   const index_html = `<!DOCTYPE html>
 <html lang="en">
@@ -87,20 +77,6 @@ reportWebVitals();`;
     <div id="root"></div>
   </body>
 </html>`;
-
-//   const app_js = `import "./App.css";
-
-// function App() {
-//   return (
-//     <>
-//       <h1>Hello world</h1>
-//       <p>From React</p>
-//     </>
-//   );
-// }
-
-// export default App;
-// `;
 
   return (
     <>
@@ -131,14 +107,6 @@ reportWebVitals();`;
           extensions={[javascript({ jsx: true })]}
         />
 
-        <li>src/index.js</li>
-        <ReactCodeMirror
-          value={index_js}
-          readOnly
-          style={{ margin: "15px 0px 15px 0px" }}
-          extensions={[javascript({ jsx: true })]}
-        />
-
         <li>JSX a Babel.js</li>
         <div style={{ display: "flex", margin: "15px" }}>
           <div>
@@ -163,6 +131,14 @@ reportWebVitals();`;
             />
           </div>
         </div>
+
+        <li>src/index.js</li>
+        <ReactCodeMirror
+          value={index_js}
+          readOnly
+          style={{ margin: "15px 0px 15px 0px" }}
+          extensions={[javascript({ jsx: true })]}
+        />
 
         <li>public/index.html</li>
         <ReactCodeMirror
