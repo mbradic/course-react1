@@ -93,6 +93,7 @@ export default function AppStructure() {
           readOnly
           style={{ margin: "15px 0px 15px 0px" }}
           extensions={[json()]}
+          basicSetup={{ highlightActiveLine: false }}
         />
         <p>Po úpravě:</p>
         <ReactCodeMirror
@@ -100,6 +101,7 @@ export default function AppStructure() {
           readOnly
           style={{ margin: "15px 0px 15px 0px" }}
           extensions={[json()]}
+          basicSetup={{ highlightActiveLine: false }}
         />
 
         <li>src/App.js</li>
@@ -108,6 +110,7 @@ export default function AppStructure() {
           readOnly
           style={{ margin: "15px 0px 15px 0px" }}
           extensions={[javascript({ jsx: true })]}
+          basicSetup={{ highlightActiveLine: false }}
         />
 
         <li>JSX</li>
@@ -116,6 +119,7 @@ export default function AppStructure() {
           readOnly
           style={{ margin: "15px 0px 15px 0px" }}
           extensions={[javascript({ jsx: true })]}
+          basicSetup={{ highlightActiveLine: false }}
         />
 
         <li> JavaScript</li>
@@ -124,6 +128,7 @@ export default function AppStructure() {
           readOnly
           style={{ margin: "15px 0px 15px 0px" }}
           extensions={[javascript({ jsx: true })]}
+          basicSetup={{ highlightActiveLine: false }}
         />
 
         <li>public/index.html</li>
@@ -132,6 +137,7 @@ export default function AppStructure() {
           readOnly
           style={{ margin: "15px 0px 15px 0px" }}
           extensions={[html()]}
+          basicSetup={{ highlightActiveLine: false }}
         />
 
         <li>src/index.js</li>
@@ -140,6 +146,7 @@ export default function AppStructure() {
           readOnly
           style={{ margin: "15px 0px 15px 0px" }}
           extensions={[javascript({ jsx: true })]}
+          basicSetup={{ highlightActiveLine: false }}
         />
 
         <li>Spusťte aplikaci</li>
@@ -147,7 +154,6 @@ export default function AppStructure() {
           value="npm start"
           readOnly
           style={{ margin: "15px 0px 15px 0px" }}
-          extensions={[json()]}
           basicSetup={{ lineNumbers: false, highlightActiveLine: false }}
         />
 
