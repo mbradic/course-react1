@@ -1,0 +1,20 @@
+> hello-world@1.0.0 start
+> react-scripts start    
+
+? We're unable to detect target browsers.
+
+Would you like to add the defaults to your package.json? » (Y/n) Y
+
+Starting the development server...
+
+Compiled successfully!
+
+You can now view hello-world in the browser.     
+
+  Local:            http://localhost:3000        
+  On Your Network:  http://192.168.0.213:3000    
+
+Note that the development build is not optimized.
+To create a production build, use npm run build. 
+
+webpack compiled successfully
