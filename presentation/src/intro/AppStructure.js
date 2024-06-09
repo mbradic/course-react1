@@ -4,34 +4,8 @@ import { javascript } from "@codemirror/lang-javascript";
 import { html } from "@codemirror/lang-html";
 import { useEffect, useState } from "react";
 
-function JsonCode({ url }) {
-  const [code, setCode] = useState("");
-
-  useEffect(() => {
-    (async function () {
-      const response = await fetch(url);
-      setCode(await response.text());
-    })();
-  }, [url]);
-
-  return (
-    <div style={{ margin: "15px 0px 15px 0px" }}>
-      <ReactCodeMirror
-        value={code}
-        readOnly
-        extensions={[json()]}
-        basicSetup={{
-          highlightActiveLine: false,
-          highlightActiveLineGutter: false,
-        }}
-      />
-    </div>
-  );
-}
-
-function JsxCode({ url, value = "" }) {
+function Code({ url, value = "", extensions, basicSetup }) {
   const [code, setCode] = useState(value);
-
   useEffect(() => {
     (async function () {
       if (!value) {
@@ -40,73 +14,71 @@ function JsxCode({ url, value = "" }) {
       }
     })();
   }, [url, value]);
-
   return (
     <div style={{ margin: "15px 0px 15px 0px" }}>
       <ReactCodeMirror
         value={code}
         readOnly
-        extensions={[javascript({ jsx: true })]}
-        basicSetup={{
-          highlightActiveLine: false,
-          highlightActiveLineGutter: false,
-        }}
+        extensions={extensions}
+        basicSetup={basicSetup}
       />
     </div>
   );
 }
 
-function HtmlCode({ url, value = "" }) {
-  const [code, setCode] = useState(value);
-
-  useEffect(() => {
-    (async function () {
-      if (!value) {
-        const response = await fetch(url);
-        setCode(await response.text());
-      }
-    })();
-  }, [url, value]);
-
+function JsonCode({ url, value }) {
   return (
-    <div style={{ margin: "15px 0px 15px 0px" }}>
-      <ReactCodeMirror
-        value={code}
-        readOnly
-        extensions={[html()]}
-        basicSetup={{
-          highlightActiveLine: false,
-          highlightActiveLineGutter: false,
-        }}
-      />
-    </div>
+    <Code
+      url={url}
+      value={value}
+      extensions={[json()]}
+      basicSetup={{
+        highlightActiveLine: false,
+        highlightActiveLineGutter: false,
+      }}
+    />
   );
 }
 
-function TextCode({ url, value = "" }) {
-  const [code, setCode] = useState(value);
-
-  useEffect(() => {
-    (async function () {
-      if (!value) {
-        const response = await fetch(url);
-        setCode(await response.text());
-      }
-    })();
-  }, [url, value]);
-
+function JsxCode({ url, value }) {
   return (
-    <div style={{ margin: "15px 0px 15px 0px" }}>
-      <ReactCodeMirror
-        value={code}
-        readOnly
-        basicSetup={{
-          highlightActiveLine: false,
-          highlightActiveLineGutter: false,
-          lineNumbers: false,
-        }}
-      />
-    </div>
+    <Code
+      url={url}
+      value={value}
+      extensions={[javascript({ jsx: true })]}
+      basicSetup={{
+        highlightActiveLine: false,
+        highlightActiveLineGutter: false,
+      }}
+    />
+  );
+}
+
+function HtmlCode({ url, value }) {
+  return (
+    <Code
+      url={url}
+      value={value}
+      extensions={[html()]}
+      basicSetup={{
+        highlightActiveLine: false,
+        highlightActiveLineGutter: false,
+      }}
+    />
+  );
+}
+
+function TextCode({ url, value }) {
+  return (
+    <Code
+      url={url}
+      value={value}
+      basicSetup={{
+        highlightActiveLine: false,
+        highlightActiveLineGutter: false,
+        lineNumbers: false,
+      }}
+    />
   );
 }
 
