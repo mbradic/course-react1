@@ -2,14 +2,14 @@ import ReactCodeMirror from "@uiw/react-codemirror";
 import { useEffect, useState } from "react";
 
 export default function DevEnv() {
-  const [createHelloWorldBat, setCreateHelloWorldBat] = useState("");
+  const [createHelloWorldPs, setCreateHelloWorldPs] = useState("");
   useEffect(() => {
     (async function () {
       const response = await fetch(
-        "https://raw.githubusercontent.com/mbradic/course-react1/main/examples/create-hello-world.bat"
+        "https://raw.githubusercontent.com/mbradic/course-react1/main/examples/create-hello-world.ps1"
       );
       const text = await response.text();
-      setCreateHelloWorldBat(text);
+      setCreateHelloWorldPs(text);
     })();
   }, []);
   return (
@@ -26,8 +26,9 @@ export default function DevEnv() {
           basicSetup={{ lineNumbers: false }}
         />
         <li>
+          <p>create-hello-world.ps1</p>
           <ReactCodeMirror
-            value={createHelloWorldBat}
+            value={createHelloWorldPs}
             readOnly
             style={{ margin: "15px 0px 15px 0px" }}
             basicSetup={{ lineNumbers: false }}
