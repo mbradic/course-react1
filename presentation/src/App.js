@@ -1,6 +1,7 @@
 import "./App.css";
 import { NavLink, Outlet } from "react-router-dom";
 import { Separator } from "./Separator";
+import { CourseTitle } from "./CourseTitle";
 
 function App({ course }) {
   return (
@@ -16,17 +17,9 @@ function App({ course }) {
 function AppHeader({ course }) {
   return (
     <header className="header">
-      <AppTitle course={course} />
+      <CourseTitle course={course} />
       <NavLessons course={course} />
     </header>
-  );
-}
-
-function AppTitle({ course }) {
-  return (
-    <h1 className="title">
-      {course.code} - {course.title}
-    </h1>
   );
 }
 

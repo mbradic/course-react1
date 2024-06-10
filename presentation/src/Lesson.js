@@ -1,6 +1,7 @@
 import { NavLink, Outlet } from "react-router-dom";
 import "./Lesson.css";
 import { Separator } from "./Separator";
+import { LessonTitle } from "./LessonTitle";
 
 export default function Lesson({ lesson }) {
   return (
@@ -13,10 +14,6 @@ export default function Lesson({ lesson }) {
       <Outlet />
     </>
   );
-}
-
-function LessonTitle({ lesson }) {
-  return <h2 className="title">{lesson.fullTitle}</h2>;
 }
 
 function NavTopics({ lesson }) {

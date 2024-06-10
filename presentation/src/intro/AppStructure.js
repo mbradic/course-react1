@@ -90,44 +90,66 @@ export default function AppStructure() {
     <>
       <h3>Struktura aplikace</h3>
 
-      <h4>/node_modules</h4>
-      <p>lokální úložiště npm balíčků</p>
+      <div className="dont-split">
+        <h4>/node_modules</h4>
+        <p>lokální úložiště npm balíčků</p>
+      </div>
 
-      <h4>/package.json - Po vytvoření</h4>
-      <JsonCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--package-json-before/examples/hello-world/package.json" />
+      <div className="dont-split">
+        <h4>/package.json - Po vytvoření</h4>
+        <JsonCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--package-json-before/examples/hello-world/package.json" />
+      </div>
 
-      <h4>/package.json - Po úpravě:</h4>
-      <JsonCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--package-json-after/examples/hello-world/package.json" />
+      <div>
+        <h4>/package.json - Po úpravě:</h4>
+        <JsonCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--package-json-after/examples/hello-world/package.json" />
+      </div>
 
-      <h4>/src/App.jsx</h4>
-      <JsxCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--create-app-js/examples/hello-world/src/App.js" />
+      <div className="dont-split">
+        <h4>/src/App.jsx</h4>
+        <JsxCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--create-app-js/examples/hello-world/src/App.js" />
 
-      <p>JSX</p>
-      <JsxCode value={babel_in} />
+        <p>JSX</p>
+        <JsxCode value={babel_in} />
 
-      <p> JavaScript</p>
-      <JsxCode value={babel_out} />
+        <p> JavaScript</p>
+        <JsxCode value={babel_out} />
+      </div>
 
-      <h4>/public/index.html</h4>
-      <HtmlCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--create-index-html/examples/hello-world/public/index.html" />
+      <div className="dont-split">
+        <h4>/public/index.html</h4>
+        <HtmlCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--create-index-html/examples/hello-world/public/index.html" />
+      </div>
 
-      <h4>/src/index.jsx</h4>
-      <JsxCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--create-index-js/examples/hello-world/src/index.js" />
+      <div className="dont-split">
+        <h4>/src/index.jsx</h4>
+        <JsxCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--create-index-js/examples/hello-world/src/index.js" />
+      </div>
 
-      <h4>Spusťte aplikaci- příkazový řádek</h4>
-      <TextCode value="npm start" />
+      <div className="dont-split">
+        <h4>Spusťte aplikaci- příkazový řádek</h4>
+        <TextCode value="npm start" />
+      </div>
 
-      <h4>Výstup - příkazový řádek</h4>
-      <TextCode url="https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-first-run-output.txt" />
+      <div className="dont-split">
+        <h4>Výstup - příkazový řádek</h4>
+        <TextCode url="https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-first-run-output.txt" />
+      </div>
 
-      <h4> Prohlížeč - statické HTML</h4>
-      <HtmlCode url="https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-static-output.html" />
+      <div className="dont-split">
+        <h4> Prohlížeč - statické HTML</h4>
+        <HtmlCode url="https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-static-output.html" />
+      </div>
 
-      <h4>Prohlížeč - DOM</h4>
-      <HtmlCode url="https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-dom-output.html" />
+      <div className="dont-split">
+        <h4>Prohlížeč - DOM</h4>
+        <HtmlCode url="https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-dom-output.html" />
+      </div>
 
-      <h4>package.json po prvním spuštění</h4>
-      <JsonCode url="https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world/package.json" />
+      <div className="dont-split">
+        <h4>package.json po prvním spuštění</h4>
+        <JsonCode url="https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world/package.json" />
+      </div>
     </>
   );
 }

@@ -23,6 +23,7 @@ import StyleAttribute from "./data-presentation/StyleAttribute";
 import ClassAttribute from "./data-presentation/ClassAttribute";
 import ComponentCSS from "./data-presentation/ComponentCSS";
 import userInteractionRoutes from "./user-interaction";
+import Print from "./Print";
 
 const course = {
   code: "REACTJS1",
@@ -57,6 +58,32 @@ const course = {
       path: "data-presentation",
       shortTitle: "Prezentace",
       fullTitle: "Prezentace dat",
+      topics: [
+        {
+          path: "interpolation",
+          shortTitle: "Interpolace",
+          fullTitle: "Interpolace",
+          element: <Interpolation />,
+        },
+        {
+          path: "conditional-rendering",
+          shortTitle: "Podmíněné",
+          fullTitle: "Podmíněné renderování",
+          element: <ConditionalRendering />,
+        },
+        {
+          path: "repeated-rendering",
+          shortTitle: "Opakované",
+          fullTitle: "Opakované renderování",
+          element: <RepeatedRendering />,
+        },
+        {
+          path: "css",
+          shortTitle: "CSS",
+          fullTitle: "Atribut style a CSS",
+          element: <CSS />
+        },
+      ],
     },
   ],
 };
@@ -70,6 +97,14 @@ const router = createBrowserRouter([
         path: "intro",
         element: <Lesson lesson={course.lessons[0]} />,
         children: course.lessons[0].topics.map((topic) => ({
+          path: topic.path,
+          element: topic.element,
+        })),
+      },
+      {
+        path: "data-presentation",
+        element: <Lesson lesson={course.lessons[1]} />,
+        children: course.lessons[1].topics.map((topic) => ({
           path: topic.path,
           element: topic.element,
         })),
@@ -142,6 +177,10 @@ const router = createBrowserRouter([
       },
       userInteractionRoutes,
     ],
+  },
+  {
+    path: "print",
+    element: <Print course={course} />,
   },
 ]);
 
