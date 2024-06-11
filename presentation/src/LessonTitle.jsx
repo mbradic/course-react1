@@ -1,3 +1,3 @@
 export function LessonTitle({ lesson }) {
-  return <h2 className="title">{lesson.fullTitle}</h2>;
+  return <h2 className="title page-break">{lesson.fullTitle}</h2>;
 }

@@ -20,7 +20,11 @@ function Code({ url, value = "", extensions, basicSetup }) {
         value={code}
         readOnly
         extensions={extensions}
-        basicSetup={basicSetup}
+        basicSetup={{
+          ...basicSetup,
+          highlightActiveLine: false,
+          highlightActiveLineGutter: false,
+        }}
       />
     </div>
   );
@@ -29,12 +33,10 @@ function Code({ url, value = "", extensions, basicSetup }) {
 function JsonCode({ url, value }) {
   return (
     <Code
-      url={url}
-      value={value}
-      extensions={[json()]}
-      basicSetup={{
-        highlightActiveLine: false,
-        highlightActiveLineGutter: false,
+      {...{
+        url,
+        value,
+        extensions: [json()],
       }}
     />
   );
@@ -42,114 +44,128 @@ function JsonCode({ url, value }) {
 
 function JsxCode({ url, value }) {
   return (
-    <Code
-      url={url}
-      value={value}
-      extensions={[javascript({ jsx: true })]}
-      basicSetup={{
-        highlightActiveLine: false,
-        highlightActiveLineGutter: false,
-      }}
-    />
+    <Code url={url} value={value} extensions={[javascript({ jsx: true })]} />
   );
 }
 
 function HtmlCode({ url, value }) {
-  return (
-    <Code
-      url={url}
-      value={value}
-      extensions={[html()]}
-      basicSetup={{
-        highlightActiveLine: false,
-        highlightActiveLineGutter: false,
-      }}
-    />
-  );
+  return <Code url={url} value={value} extensions={[html()]} />;
 }
 
 function TextCode({ url, value }) {
-  return (
-    <Code
-      url={url}
-      value={value}
-      basicSetup={{
-        highlightActiveLine: false,
-        highlightActiveLineGutter: false,
-        lineNumbers: false,
-      }}
-    />
-  );
+  return <Code url={url} value={value} basicSetup={{ lineNumbers: false }} />;
 }
+const babel_in = `const title = <h1>Hello world</h1>;`;
+const babel_out = `var title = /*#__PURE__*/ React.createElement("h1", null, "Hello world");`;
 
-export default function AppStructure() {
-  const babel_in = `const title = <h1>Hello world</h1>;`;
-  const babel_out = `var title = /*#__PURE__*/ React.createElement("h1", null, "Hello world");`;
-
-  return (
-    <>
-      <h3>Struktura aplikace</h3>
-
-      <div className="dont-split">
-        <h4>/node_modules</h4>
-        <p>lokální úložiště npm balíčků</p>
-      </div>
-
-      <div className="dont-split">
-        <h4>/package.json - Po vytvoření</h4>
-        <JsonCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--package-json-before/examples/hello-world/package.json" />
-      </div>
-
-      <div>
-        <h4>/package.json - Po úpravě:</h4>
-        <JsonCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--package-json-after/examples/hello-world/package.json" />
-      </div>
-
-      <div className="dont-split">
-        <h4>/src/App.jsx</h4>
+const appStructureSubTopics = [
+  {
+    path: "node_modules",
+    shortTitle: "node_modules",
+    fullTitle: "/node_modules",
+    content: <p>lokální úložiště npm balíčků</p>,
+  },
+  {
+    path: "package-json-before",
+    shortTitle: "package.json před",
+    fullTitle: "package.json - Před úpravou",
+    content: (
+      <JsonCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--package-json-before/examples/hello-world/package.json" />
+    ),
+  },
+  {
+    path: "package-json-after",
+    shortTitle: "package.json po",
+    fullTitle: "package.json - Po úpravě",
+    content: (
+      <JsonCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--package-json-after/examples/hello-world/package.json" />
+    ),
+  },
+  {
+    path: "app-jsx",
+    shortTitle: "app.jsx",
+    fullTitle: "/src/app.jsx",
+    content: (
+      <>
         <JsxCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--create-app-js/examples/hello-world/src/App.js" />
 
         <p>JSX</p>
         <JsxCode value={babel_in} />
 
-        <p> JavaScript</p>
+        <p>JavaScript</p>
         <JsxCode value={babel_out} />
-      </div>
+      </>
+    ),
+  },
+  {
+    path: "index-html",
+    shortTitle: "index.html",
+    fullTitle: "/public/index.html",
+    content: (
+      <HtmlCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--create-index-html/examples/hello-world/public/index.html" />
+    ),
+  },
+  {
+    path: "index-jsx",
+    shortTitle: "index.jsx",
+    fullTitle: "/src/index.jsx",
+    content: (
+      <JsxCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--create-index-js/examples/hello-world/src/index.js" />
+    ),
+  },
+  {
+    path: "npm-start",
+    shortTitle: "npm start",
+    fullTitle: "Spusťte aplikaci - příkazový řádek",
+    content: <TextCode value="npm start" />,
+  },
+  {
+    path: "output",
+    shortTitle: "Výstup",
+    fullTitle: "Výstup - příkazový řádek",
+    content: (
+      <TextCode url="https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-first-run-output.txt" />
+    ),
+  },
+  {
+    path: "browser-html",
+    shortTitle: "Prohlížeč - HTML",
+    fullTitle: "Výstup - prohlížeč - HTML",
+    content: (
+      <HtmlCode url="https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-static-output.html" />
+    ),
+  },
+  {
+    path: "browser-dom",
+    shortTitle: "Prohlížeč - DOM",
+    fullTitle: "Výstup - prohlížeč - DOM",
+    content: (
+      <HtmlCode url="https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-dom-output.html" />
+    ),
+  },
+  {
+    path: "package-json-final",
+    shortTitle: "package.json - po prvním spuštění",
+    fullTitle: "package.json - po prvním spuštění",
+    content: (
+      <JsonCode url="https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world/package.json" />
+    ),
+  },
+];
 
-      <div className="dont-split">
-        <h4>/public/index.html</h4>
-        <HtmlCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--create-index-html/examples/hello-world/public/index.html" />
-      </div>
+function AppStructure() {
+  return (
+    <>
+      <h3>Struktura aplikace</h3>
 
-      <div className="dont-split">
-        <h4>/src/index.jsx</h4>
-        <JsxCode url="https://raw.githubusercontent.com/mbradic/course-react1/intro--app-structure--create-index-js/examples/hello-world/src/index.js" />
-      </div>
-
-      <div className="dont-split">
-        <h4>Spusťte aplikaci- příkazový řádek</h4>
-        <TextCode value="npm start" />
-      </div>
-
-      <div className="dont-split">
-        <h4>Výstup - příkazový řádek</h4>
-        <TextCode url="https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-first-run-output.txt" />
-      </div>
-
-      <div className="dont-split">
-        <h4> Prohlížeč - statické HTML</h4>
-        <HtmlCode url="https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-static-output.html" />
-      </div>
-
-      <div className="dont-split">
-        <h4>Prohlížeč - DOM</h4>
-        <HtmlCode url="https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world-dom-output.html" />
-      </div>
-
-      <div className="dont-split">
-        <h4>package.json po prvním spuštění</h4>
-        <JsonCode url="https://raw.githubusercontent.com/mbradic/course-react1/main/examples/hello-world/package.json" />
-      </div>
+      {appStructureSubTopics.map((st) => (
+        <div key={st.path} className="dont-split">
+          <h4>{st.fullTitle}</h4>
+          {st.content}
+        </div>
+      ))}
     </>
   );
 }
+
+export default AppStructure;

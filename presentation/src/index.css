@@ -2,6 +2,10 @@
   .dont-split {
     break-inside: avoid;
   }
+
+  .page-break {
+    break-before: always;
+  }
 }
 
 body {

@@ -3,12 +3,14 @@ export default function ValueAttributeOutput() {
   const done = false;
   return (
     <>
-      <input value={title} />
-      <input
-        style={{ width: "30px", height: "30px" }}
-        type="checkbox"
-        checked={done}
-      />
+      
+        <input value={title} />
+        <input
+          
+          type="checkbox"
+          checked={done}
+        />
+      
     </>
   );
 }

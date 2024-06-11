@@ -18,6 +18,7 @@ export default function LogicalAnd() {
       </p>
       <p>App.js</p>
       <ReactCodeMirror
+        
         value={basic_interpolation}
         readOnly
         extensions={[javascript({ jsx: true })]}

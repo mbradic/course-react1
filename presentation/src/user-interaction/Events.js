@@ -7,22 +7,23 @@ export default function Events() {
     return <button onClick={handleClick}>Click me</button>;
 }`;
 
-return (
+  return (
     <>
-      <div style={{ display: "flex" }}>
-        <div style={{ width: "50%" }}>
-          <p>Kód:</p>
-          <p>App.js</p>
-          <ReactCodeMirror
-            value={code}
-            readOnly
-            extensions={[javascript({ jsx: true })]}
-          />
-        </div>
-        <div style={{ margin: "0 0 0 50px", width: "50%" }}>
-          <p>Výstup:</p>
-          <button onClick={()=>console.log("Kliknuto")}>Click me</button>
-        </div>
+      <p>
+        <strong>Kód:</strong>
+      </p>
+      <p>App.jsx</p>
+      <ReactCodeMirror
+        value={code}
+        readOnly
+        extensions={[javascript({ jsx: true })]}
+      />
+
+      <p>
+        <strong>Výstup:</strong>
+      </p>
+      <div style={{ border: "1px solid black" }}>
+        <button onClick={() => console.log("Kliknuto")}>Click me</button>
       </div>
     </>
   );

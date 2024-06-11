@@ -24,6 +24,9 @@ import ClassAttribute from "./data-presentation/ClassAttribute";
 import ComponentCSS from "./data-presentation/ComponentCSS";
 import userInteractionRoutes from "./user-interaction";
 import Print from "./Print";
+import Events from "./user-interaction/Events";
+import ComponentState from "./user-interaction/ComponentState";
+import Input from "./user-interaction/Input";
 
 const course = {
   code: "REACTJS1",
@@ -63,7 +66,15 @@ const course = {
           path: "interpolation",
           shortTitle: "Interpolace",
           fullTitle: "Interpolace",
-          element: <Interpolation />,
+          element: (
+            <Interpolation
+              topic={{
+                path: "interpolation",
+                shortTitle: "Interpolace",
+                fullTitle: "Interpolace",
+              }}
+            />
+          ),
         },
         {
           path: "conditional-rendering",
@@ -81,7 +92,32 @@ const course = {
           path: "css",
           shortTitle: "CSS",
           fullTitle: "Atribut style a CSS",
-          element: <CSS />
+          element: <CSS />,
+        },
+      ],
+    },
+    {
+      path: "user-interaction",
+      shortTitle: "Interakce",
+      fullTitle: "Interakce s uživatelem",
+      topics: [
+        {
+          path: "events",
+          shortTitle: "Události",
+          fullTitle: "Reakce na události",
+          element: <Events />,
+        },
+        {
+          path: "component-state",
+          shortTitle: "Stav",
+          fullTitle: "Stav komponenty",
+          element: <ComponentState />,
+        },
+        {
+          path: "input",
+          shortTitle: "Vstupy",
+          fullTitle: "Uživatelské vstupy",
+          element: <Input />,
         },
       ],
     },

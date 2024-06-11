@@ -16,7 +16,6 @@ export default function OnChangeEventOutput() {
       <input name="title" value={title} onChange={changeInput} />
       <input
         name="done"
-        style={{ width: "30px", height: "30px" }}
         type="checkbox"
         checked={done}
         onChange={changeInput}
