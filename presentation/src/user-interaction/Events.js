@@ -1,5 +1,5 @@
-import ReactCodeMirror from "@uiw/react-codemirror";
-import { javascript } from "@codemirror/lang-javascript";
+// import ReactCodeMirror from "@uiw/react-codemirror";
+// import { javascript } from "@codemirror/lang-javascript";
 import { JsxCode } from "../JsxCode";
 
 export default function Events() {
@@ -11,9 +11,7 @@ export default function Events() {
   return (
     <>
       <h3>Události</h3>
-      <p>
-        <strong>Kód:</strong>
-      </p>
+      <h4>Kód:</h4>
       {/* <p>App.jsx</p>
       <ReactCodeMirror
         value={code}
@@ -22,9 +20,7 @@ export default function Events() {
       /> */}
       <JsxCode url="https://raw.githubusercontent.com/mbradic/course-react1/user-interaction--events--app-jsx--initial/examples/todo-list/src/App.jsx" />
 
-      <p>
-        <strong>Výstup:</strong>
-      </p>
+      <h4>Výstup:</h4>
       <div style={{ border: "1px solid black" }}>
         <button onClick={() => console.log("Kliknuto")}>Click me</button>
       </div>

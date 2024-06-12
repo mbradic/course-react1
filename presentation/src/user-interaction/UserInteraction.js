@@ -1,6 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 
-export default function Intro() {
+export default function UserInteraction() {
   return (
     <>
       <div
