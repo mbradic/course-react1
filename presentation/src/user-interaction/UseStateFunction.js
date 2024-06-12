@@ -1,6 +1,7 @@
 import ReactCodeMirror from "@uiw/react-codemirror";
 import { javascript } from "@codemirror/lang-javascript";
 import UseStateFunctionOutput from "./UseStateFunctionOutput";
+import { JsxCode } from "../JsxCode";
 
 export default function UseStateFunction() {
   const code = `import { useState } from "react";
@@ -18,20 +19,18 @@ export default function UseStateFunctionOutput() {
 
   return (
     <>
-      <p>
-        <strong>Kód:</strong>
-      </p>
-      <p>App.js</p>
-      <ReactCodeMirror
+      <h4>Kód:</h4>
+      <p>App.jsx</p>
+      {/* <ReactCodeMirror
         value={code}
         readOnly
         extensions={[javascript({ jsx: true })]}
-      />
-
+      /> */}
+      <JsxCode url="https://raw.githubusercontent.com/mbradic/course-react1/user-interaction--component-state--useState-function--App-jsx/examples/todo-list/src/App.jsx" />
       <p>
         <strong>Výstup:</strong>
       </p>
-      <div style={{ margin: "0 0 0 50px", width: "50%" }}>
+      <div style={{ border: "1px solid black" }}>
         <UseStateFunctionOutput />
       </div>
     </>
