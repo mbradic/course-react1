@@ -1,34 +1,7 @@
-import ReactCodeMirror from "@uiw/react-codemirror";
 import { json } from "@codemirror/lang-json";
-import { javascript } from "@codemirror/lang-javascript";
 import { html } from "@codemirror/lang-html";
-import { useEffect, useState } from "react";
-
-function Code({ url, value = "", extensions, basicSetup }) {
-  const [code, setCode] = useState(value);
-  useEffect(() => {
-    (async function () {
-      if (!value) {
-        const response = await fetch(url);
-        setCode(await response.text());
-      }
-    })();
-  }, [url, value]);
-  return (
-    <div style={{ margin: "15px 0px 15px 0px" }}>
-      <ReactCodeMirror
-        value={code}
-        readOnly
-        extensions={extensions}
-        basicSetup={{
-          ...basicSetup,
-          highlightActiveLine: false,
-          highlightActiveLineGutter: false,
-        }}
-      />
-    </div>
-  );
-}
+import { Code } from "../Code";
+import { JsxCode } from "../JsxCode";
 
 function JsonCode({ url, value }) {
   return (
@@ -39,12 +12,6 @@ function JsonCode({ url, value }) {
         extensions: [json()],
       }}
     />
-  );
-}
-
-function JsxCode({ url, value }) {
-  return (
-    <Code url={url} value={value} extensions={[javascript({ jsx: true })]} />
   );
 }
 
