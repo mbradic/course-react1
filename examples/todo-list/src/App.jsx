@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 function App() {
-  const initialCount = 0;
   const [todo, setToDo] = useState({
     task: "Naučit se prezentovat data v Reactu",
     done: false,
