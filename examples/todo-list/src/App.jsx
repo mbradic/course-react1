@@ -3,7 +3,7 @@ import { useState } from "react";
 function App() {
   const initialCount = 0;
   const [count, setCount] = useState(initialCount);
-  const handleClick = () => setCount(count + 1);
+  const handleClick = () => setCount((old) => old + 1);
   return (
     <>
       <span>{count} </span>
