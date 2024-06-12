@@ -2,12 +2,18 @@ import { useState } from "react";
 
 function App() {
   const initialCount = 0;
-  const [count, setCount] = useState(initialCount);
-  const handleClick = () => setCount((old) => old + 1);
+  const [todo, setToDo] = useState({
+    task: "Naučit se prezentovat data v Reactu",
+    done: false,
+  });
+  const handleClick = () => setToDo((old) => ({ ...old, done: true }));
   return (
     <>
-      <span>{count} </span>
-      <button onClick={handleClick}>++</button>
+      <div style={{ textDecoration: todo.done ? "line-through" : "" }}>
+        Task: {todo.task}
+      </div>
+      <div>Done: {todo.done ? "Yes" : "No"}</div>
+      <button onClick={handleClick}>Done</button>
     </>
   );
 }
