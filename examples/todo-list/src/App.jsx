@@ -1,5 +1,15 @@
+import { useState } from "react";
+
 function App() {
-    const handleClick = () => console.log("Kliknuto");
-    return <button onClick={handleClick}>Click me</button>;
+  const initialCount = 0;
+  const [count, setCount] = useState(initialCount);
+  const handleClick = () => setCount(count + 1);
+  return (
+    <>
+      <span>{count} </span>
+      <button onClick={handleClick}>++</button>
+    </>
+  );
 }
-export default App
+
+export default App;
