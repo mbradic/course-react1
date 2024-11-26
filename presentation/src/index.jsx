@@ -5,7 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Lesson from "./Lesson";
-import JSFramework from "./intro/JSFramework";
 import AppStructure from "./intro/AppStructure";
 import DevEnv from "./intro/DevEnv";
 import DataPresentation from "./data-presentation/DataPresentation";
@@ -24,110 +23,12 @@ import ClassAttribute from "./data-presentation/ClassAttribute";
 import ComponentCSS from "./data-presentation/ComponentCSS";
 import userInteractionRoutes from "./user-interaction";
 import Print from "./Print";
-import Events from "./user-interaction/Events";
-import ComponentState from "./user-interaction/ComponentState";
-import Input from "./user-interaction/Input";
-
-const course = {
-  code: "REACTJS1",
-  title: "Úvod do Reactu",
-  lessons: [
-    {
-      path: "intro",
-      shortTitle: "Úvod",
-      fullTitle: "Úvod do Reactu",
-      topics: [
-        {
-          path: "js-framework",
-          shortTitle: "Framework",
-          fullTitle: "JavaScript framework",
-          element: <JSFramework />,
-        },
-        {
-          path: "dev-env",
-          shortTitle: "Prostředí",
-          fullTitle: "Vývojové prostředí",
-          element: <DevEnv />,
-        },
-        {
-          path: "app-structure",
-          shortTitle: "Struktura",
-          fullTitle: "Struktura aplikace",
-          element: <AppStructure />,
-        },
-      ],
-    },
-    {
-      path: "data-presentation",
-      shortTitle: "Prezentace",
-      fullTitle: "Prezentace dat",
-      topics: [
-        {
-          path: "interpolation",
-          shortTitle: "Interpolace",
-          fullTitle: "Interpolace",
-          element: (
-            <Interpolation
-              topic={{
-                path: "interpolation",
-                shortTitle: "Interpolace",
-                fullTitle: "Interpolace",
-              }}
-            />
-          ),
-        },
-        {
-          path: "conditional-rendering",
-          shortTitle: "Podmíněné",
-          fullTitle: "Podmíněné renderování",
-          element: <ConditionalRendering />,
-        },
-        {
-          path: "repeated-rendering",
-          shortTitle: "Opakované",
-          fullTitle: "Opakované renderování",
-          element: <RepeatedRendering />,
-        },
-        {
-          path: "css",
-          shortTitle: "CSS",
-          fullTitle: "Atribut style a CSS",
-          element: <CSS />,
-        },
-      ],
-    },
-    {
-      path: "user-interaction",
-      shortTitle: "Interakce",
-      fullTitle: "Interakce s uživatelem",
-      topics: [
-        {
-          path: "events",
-          shortTitle: "Události",
-          fullTitle: "Reakce na události",
-          element: <Events />,
-        },
-        {
-          path: "component-state",
-          shortTitle: "Stav",
-          fullTitle: "Stav komponenty",
-          element: <ComponentState />,
-        },
-        {
-          path: "input",
-          shortTitle: "Vstupy",
-          fullTitle: "Uživatelské vstupy",
-          element: <Input />,
-        },
-      ],
-    },
-  ],
-};
+import { course } from "./course";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App course={course} />,
+    element: <App />,
     children: [
       {
         path: "intro",

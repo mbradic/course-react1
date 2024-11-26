@@ -2,8 +2,9 @@ import "./App.css";
 import { NavLink, Outlet } from "react-router-dom";
 import { Separator } from "./Separator";
 import { CourseTitle } from "./CourseTitle";
+import { course } from "./course";
 
-function App({ course }) {
+function App() {
   return (
     <>
       <AppHeader course={course} />
