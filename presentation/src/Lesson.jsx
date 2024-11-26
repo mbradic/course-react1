@@ -1,9 +1,12 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, useLocation } from "react-router-dom";
 import "./Lesson.css";
 import { Separator } from "./Separator";
 import { LessonTitle } from "./LessonTitle";
+import { course } from "./course";
 
-export default function Lesson({ lesson }) {
+export default function Lesson() {
+  const location = useLocation();
+  const lesson = course.lessons.find((l) => "/" + l.path === location.pathname);
   return (
     <>
       <div className="header">

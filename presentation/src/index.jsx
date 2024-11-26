@@ -32,7 +32,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "intro",
-        element: <Lesson lesson={course.lessons[0]} />,
+        element: <Lesson />,
         children: course.lessons[0].topics.map((topic) => ({
           path: topic.path,
           element: topic.element,
