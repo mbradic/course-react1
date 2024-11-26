@@ -19,7 +19,10 @@ export default function Lesson() {
   );
 }
 
-function NavTopics({ lesson }) {
+function NavTopics() {
+  const location = useLocation();
+  const [_, lessonPath] = location.pathname.split("/");
+  const lesson = course.lessons.find((l) => l.path === lessonPath);
   return (
     <nav className="nav">
       {lesson.topics.map((topic, index, arr) => (

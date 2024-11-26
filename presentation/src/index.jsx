@@ -24,6 +24,7 @@ import ComponentCSS from "./data-presentation/ComponentCSS";
 import userInteractionRoutes from "./user-interaction";
 import Print from "./Print";
 import { course } from "./course";
+import Topic from "./Topic";
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
       },
       {
         path: "data-presentation",
-        element: <Lesson lesson={course.lessons[1]} />,
+        element: <Lesson />,
         children: course.lessons[1].topics.map((topic) => ({
           path: topic.path,
           element: topic.element,
@@ -48,7 +49,7 @@ const router = createBrowserRouter([
       },
       {
         path: "data-presentation",
-        element: <DataPresentation />,
+        element: <Topic />,
         children: [
           {
             path: "interpolation",
